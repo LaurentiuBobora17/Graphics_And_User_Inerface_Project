@@ -46,6 +46,7 @@ public class MainFrame
 		this.setVisible(true);
 		
 		this.setResizable(false);
+		
 	}
 	
 	private void initializeJogl()
