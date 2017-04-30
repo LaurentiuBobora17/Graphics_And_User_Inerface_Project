@@ -39,7 +39,7 @@ public class MainFrame
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		
-		this.setSize(800, 600);
+		this.setSize(1200, 500);
 		
 		this.initializeJogl();
 		
@@ -122,10 +122,16 @@ public class MainFrame
 	double dirx = -1, diry = 1;
 	double lenx = 1, leny = 1;
 	double beta = 315;
+	double alfa = 45;
+	double dir1 = 1;
+	double dir2 = 1;
 	
-	// origin (0, 0)
-	double x0 = 0;
+	// origin for first speedometer (0, 0)
+	double x0 = -20;
 	double y0 = 0;
+	// origin for second speedomeeter
+	double x1 = 85;
+	double y1 = 0;
 	
 	// random point
 	Random rand;
@@ -143,24 +149,42 @@ public class MainFrame
 		//this.cerc(gl, 0.25, x0 + 12 * Math.cos(Math.toRadians(beta)), y0 + 12 * Math.sin(Math.toRadians(beta)));
 		//this.cerc(gl, 0.25, x0 + 2 * Math.cos(Math.toRadians(beta)), y0);
 		//this.cerc(gl, 0.25, x0, y0 + 2 * Math.sin(Math.toRadians(beta)));
-		this.cerc(gl, 0.25, x0, y0);
-		this.cerc(gl, 12, x0, y0);
+		//this.cerc(gl, 0.25, x0, y0);
+		this.cerc(gl, 25, x0, y0);
+		this.cerc(gl, 25, x1, y1);
 		
+		// primul ac indicator
 		gl.glBegin(GL.GL_LINES);
-			gl.glVertex3d(0, 0, 0);
-			gl.glVertex3d(x0 + 10 * Math.cos(Math.toRadians(beta)), y0 + 10 * Math.sin(Math.toRadians(beta)), 0);
+			gl.glVertex3d(x0, y0, 0);
+			gl.glVertex3d(x0 + 22 * Math.cos(Math.toRadians(beta)), y0 + 22 * Math.sin(Math.toRadians(beta)), 0);
 		gl.glEnd();
 		
-		if(beta <= 315 || beta >= 0)
-			beta += 0.5;
-		if( beta == 225 )
-			beta -= 0.5;
+		beta = beta + (dir1 * 1.5);
+		alfa = alfa + (dir2 * 1.5);
 		
-		//if(beta == 225 )
-			//beta -= 0.5;
-		
-		if( beta > 360 )
+		if( beta == 315 ){
+			dir1 = 1;
+			
+		}
+		if( beta == 360)
 			beta = 0;
+		else if(beta == 0)
+				beta = 360;
+		
+		if(beta == 225){
+			dir1 = -1;
+		}
+		
+		// al doilea ac indicator 
+		gl.glBegin(GL.GL_LINES);
+			gl.glVertex3d(x1, y1, 0);
+			gl.glVertex3d(x1 + 22 * Math.cos(Math.toRadians(alfa)), y1 + 22 * Math.sin(Math.toRadians(alfa)), 0);
+		gl.glEnd();
+		
+		if(alfa == 225)
+			dir2 = -1;
+		if(alfa == 45)
+			dir2 = 1;
 		
 		// rotate on random position
 		//gl.glColor3d(0, 1, 0);
