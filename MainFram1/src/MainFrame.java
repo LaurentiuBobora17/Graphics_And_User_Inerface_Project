@@ -90,20 +90,6 @@ public class MainFrame
 
 	}
 	
-	public void house(GL2 gl){
-		gl.glColor3d(0, 1, 0);
-		gl.glBegin(GL.GL_LINE_LOOP);
-			gl.glVertex2d(10, 10);
-			gl.glVertex2d(10, 20);
-			gl.glVertex2d(20, 20);
-			gl.glVertex2d(20, 10);
-		gl.glEnd();
-	}
-	
-	public void roof(GL2 gl){
-		
-	}
-	
 	private void cerc(GL2 gl, double r, double cx, double cy) {		
 		gl.glLineWidth(3);
 		gl.glBegin(GL.GL_LINE_LOOP);
@@ -144,12 +130,7 @@ public class MainFrame
 	
 		// Erasing the canvas -- filling it with the clear color.
 		gl.glClear(GL.GL_COLOR_BUFFER_BIT);
-
-		// rotate on all three axis around the origin
-		//this.cerc(gl, 0.25, x0 + 12 * Math.cos(Math.toRadians(beta)), y0 + 12 * Math.sin(Math.toRadians(beta)));
-		//this.cerc(gl, 0.25, x0 + 2 * Math.cos(Math.toRadians(beta)), y0);
-		//this.cerc(gl, 0.25, x0, y0 + 2 * Math.sin(Math.toRadians(beta)));
-		//this.cerc(gl, 0.25, x0, y0);
+		
 		this.cerc(gl, 25, x0, y0);
 		this.cerc(gl, 25, x1, y1);
 		
