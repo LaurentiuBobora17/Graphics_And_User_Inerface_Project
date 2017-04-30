@@ -131,6 +131,7 @@ public class MainFrame
 		// Erasing the canvas -- filling it with the clear color.
 		gl.glClear(GL.GL_COLOR_BUFFER_BIT);
 		
+		// cercurile pentru spedometre
 		this.cerc(gl, 25, x0, y0);
 		this.cerc(gl, 25, x1, y1);
 		
